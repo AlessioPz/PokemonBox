@@ -17,7 +17,7 @@ class PokemonRepositoryImpl(
 ) : PokemonRepository {
 
     private companion object {
-        /** L'API espone altezza in decimetri e peso in etti; divisione per 10 → m e kg. */
+        /** PokeAPI returns height in decimeters and weight in hectograms; divide by 10 for m and kg. */
         private const val POKEMON_API_STAT_DIVISOR = 10.0
     }
 
@@ -65,6 +65,24 @@ class PokemonRepositoryImpl(
             ?.replace("\u000c", " ")
             ?.trim()
             .orEmpty()
+        val typeDetails = detail.types
+            .sortedBy { it.slot }
+            .map { slot -> api.getTypeDetail(slot.type.name) }
+        val weaknesses = typeDetails
+            .flatMap { type -> type.damageRelations.doubleDamageFrom }
+            .map { type -> type.name.replaceFirstChar { it.uppercase() } }
+            .distinct()
+        val resistances = typeDetails
+            .flatMap { type -> type.damageRelations.halfDamageFrom + type.damageRelations.noDamageFrom }
+            .map { type -> type.name.replaceFirstChar { it.uppercase() } }
+            .filterNot { weakness -> weaknesses.contains(weakness) }
+            .distinct()
+        val hp = detail.stats.firstOrNull { it.stat.name == "hp" }?.baseStat
+        val heightMeters = detail.height / POKEMON_API_STAT_DIVISOR
+        val weightKg = detail.weight / POKEMON_API_STAT_DIVISOR
+        val abilities = detail.abilities.map { abilitySlot ->
+            abilitySlot.ability.name.replaceFirstChar { it.uppercase() }
+        }
 
         return Pokemon(
             id = detail.id,
@@ -73,23 +91,13 @@ class PokemonRepositoryImpl(
             types = detail.types.sortedBy { it.slot }.map { slot ->
                 slot.type.name.replaceFirstChar { it.uppercase() }
             },
-            description = buildString {
-                append(description)
-                if (description.isNotBlank()) append(" ")
-                append(
-                    "Height: ${detail.height / POKEMON_API_STAT_DIVISOR} m, " +
-                        "Weight: ${detail.weight / POKEMON_API_STAT_DIVISOR} kg."
-                )
-                if (detail.abilities.isNotEmpty()) {
-                    append(" Abilities: ")
-                    append(
-                        detail.abilities.joinToString(", ") { abilitySlot ->
-                            abilitySlot.ability.name.replaceFirstChar { it.uppercase() }
-                        }
-                    )
-                    append(".")
-                }
-            }
+            description = description,
+            hp = hp,
+            heightMeters = heightMeters,
+            weightKg = weightKg,
+            abilities = abilities,
+            weaknesses = weaknesses,
+            resistances = resistances
         )
     }
 

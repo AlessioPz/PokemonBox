@@ -1,12 +1,21 @@
 <resources>
     <string name="app_name">PokemonBox</string>
-    <string name="search_hint">Search name or type</string>
-    <string name="pokemon_image">Pokemon image</string>
-    <string name="error_loading_pokemon">Unable to load pokemon. Tap to retry.</string>
-    <string name="tab_all">Tutti</string>
-    <string name="tab_favorites">Preferiti</string>
-    <string name="favorite_action">Aggiungi ai preferiti</string>
-    <string name="back">Indietro</string>
+    <string name="search_hint">Search by name or type</string>
+    <string name="pokemon_image">Pokémon image</string>
+    <string name="error_loading_pokemon">Unable to load Pokémon. Tap to retry.</string>
+    <string name="tab_all">All</string>
+    <string name="tab_favorites">Favorites</string>
+    <string name="favorite_action">Add to favorites</string>
+    <string name="back">Back</string>
     <string name="pokemon_id_label">#%1$d</string>
-    <string name="fab_search">Apri la ricerca</string>
+    <string name="fab_search">Open search</string>
+    <string name="pokemon_hp_label">HP %1$d</string>
+    <string name="pokemon_meta_label">No. %1$d • %2$s</string>
+    <string name="pokemon_height_weight_label">Hgt. %1$s m • Wgt. %2$s kg</string>
+    <string name="pokemon_weakness_title">Weakness</string>
+    <string name="pokemon_resistance_title">Resistance</string>
+    <string name="pokemon_retreat_title">Retreat</string>
+    <string name="pokemon_retreat_label">%1$s</string>
+    <string name="pokemon_fake_attack_primary_text">Type-based hit using %1$s. On hit, deal extra damage next turn.</string>
+    <string name="pokemon_fake_attack_secondary_text">Special move inspired by: %1$s.</string>
 </resources>

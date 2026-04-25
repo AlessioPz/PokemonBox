@@ -86,7 +86,7 @@ class MainViewModel(
                     it.copy(
                         isLoading = false,
                         isInitialLoading = false,
-                        errorMessage = "Errore nel caricamento dati"
+                        errorMessage = "Failed to load data"
                     )
                 }
             }

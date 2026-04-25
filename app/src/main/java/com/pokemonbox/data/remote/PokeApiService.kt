@@ -3,6 +3,7 @@ package com.pokemonbox.data.remote
 import com.pokemonbox.data.remote.dto.PokemonDetailDto
 import com.pokemonbox.data.remote.dto.PokemonListResponseDto
 import com.pokemonbox.data.remote.dto.PokemonSpeciesDto
+import com.pokemonbox.data.remote.dto.TypeDetailDto
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -23,4 +24,9 @@ interface PokeApiService {
     suspend fun getPokemonSpecies(
         @Path("id") id: Int
     ): PokemonSpeciesDto
+
+    @GET("type/{nameOrId}")
+    suspend fun getTypeDetail(
+        @Path("nameOrId") nameOrId: String
+    ): TypeDetailDto
 }

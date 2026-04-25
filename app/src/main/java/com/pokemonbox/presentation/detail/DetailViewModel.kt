@@ -29,7 +29,7 @@ class DetailViewModel(
             }.onSuccess { pokemon ->
                 _uiState.update { it.copy(pokemon = pokemon, isLoading = false, errorMessage = null) }
             }.onFailure {
-                _uiState.update { it.copy(isLoading = false, errorMessage = "Errore nel caricamento dettaglio") }
+                _uiState.update { it.copy(isLoading = false, errorMessage = "Failed to load details") }
             }
         }
     }

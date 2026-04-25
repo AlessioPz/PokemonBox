@@ -33,14 +33,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 
-    companion object {
-        private const val PADDING_LIST_BOTTOM_DP = 24
-        private const val PROGRESS_MARGIN_DP = 16
-        private const val FAB_BASE_MARGIN_DP = 20
-        private const val LOAD_MORE_REMAINING_ITEMS = 4
-        private const val BOTTOM_SHEET_DIM_AMOUNT = 0.05f
-    }
-
     private lateinit var binding: ActivityMainBinding
     private val viewModel: MainViewModel by viewModel()
     private val pokemonAdapter = PokemonAdapter(
@@ -76,14 +68,14 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupSystemBarInsets() {
         val d = resources.displayMetrics.density
-        val paddingBottomListDp = (PADDING_LIST_BOTTOM_DP * d).toInt()
-        val marginProgressDp = (PROGRESS_MARGIN_DP * d).toInt()
+        val paddingBottomListDp = (ActivityConstants.Main.PADDING_LIST_BOTTOM_DP * d).toInt()
+        val marginProgressDp = (ActivityConstants.Main.PROGRESS_MARGIN_DP * d).toInt()
 
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { _, insets ->
             val system = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             val cutout = insets.getInsets(WindowInsetsCompat.Type.displayCutout())
             val topSafe = max(system.top, cutout.top)
-            val fabMarginBase = (FAB_BASE_MARGIN_DP * d).toInt()
+            val fabMarginBase = (ActivityConstants.Main.FAB_BASE_MARGIN_DP * d).toInt()
 
             binding.tvTitle.updateLayoutParams<ConstraintLayout.LayoutParams> {
                 topMargin = topSafe
@@ -118,7 +110,7 @@ class MainActivity : AppCompatActivity() {
 
                     val totalItemCount = linearLayoutManager.itemCount
                     val lastVisibleItem = linearLayoutManager.findLastVisibleItemPosition()
-                    if (lastVisibleItem >= totalItemCount - LOAD_MORE_REMAINING_ITEMS) {
+                    if (lastVisibleItem >= totalItemCount - ActivityConstants.Main.LOAD_MORE_REMAINING_ITEMS) {
                         viewModel.loadNextPage()
                     }
                 }
@@ -158,7 +150,7 @@ class MainActivity : AppCompatActivity() {
         })
 
         dialog.setOnShowListener {
-            dialog.window?.setDimAmount(BOTTOM_SHEET_DIM_AMOUNT)
+            dialog.window?.setDimAmount(ActivityConstants.Main.BOTTOM_SHEET_DIM_AMOUNT)
             sheetBinding.etSearch.requestFocus()
             val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
             imm.showSoftInput(sheetBinding.etSearch, InputMethodManager.SHOW_IMPLICIT)

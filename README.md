@@ -1,35 +1,35 @@
 # PokemonBox
 
-Progetto Android Kotlin realizzato secondo i requisiti dell'esercizio tecnico:
+Android Kotlin project built to match the technical exercise requirements:
 
-- Architettura `MVVM` con separazione a layer (`presentation`, `domain`, `data`)
-- `Use Case` per la business logic
-- `Repository` per l'accesso ai dati
-- Chiamate asincrone con `Kotlin Coroutines`
-- Dependency Injection con `Koin`
-- Networking con `Retrofit` + `Gson`
+- `MVVM` architecture with clear layers (`presentation`, `domain`, `data`)
+- `Use case` types for business logic
+- `Repository` for data access
+- Asynchronous work with `Kotlin Coroutines`
+- Dependency injection with `Koin`
+- Networking with `Retrofit` + `Gson`
 
-## Funzionalita
+## Features
 
-- Lista Pokemon paginata (20 elementi per pagina)
-- Caricamento automatico della pagina successiva in fondo alla lista
-- Ricerca per nome o tipo sui Pokemon caricati
-- Gestione preferiti con persistenza locale (`Room`)
-- Tab dedicata `Preferiti` con rimozione rapida dalla lista preferiti
-- Tap su un Pokemon per aprire la pagina dettaglio con chiamata API by id
-- UI ispirata al mockup fornito (titolo, barra ricerca, card lista)
+- Paginated Pokémon list (20 items per page)
+- Auto-loads the next page when scrolling near the end
+- Search by name or type among loaded Pokémon
+- Favorites with local persistence (`Room`)
+- Dedicated `Favorites` tab with quick removal from the list
+- Tap a Pokémon to open the detail screen (API by id)
+- UI inspired by the provided mockup (title, search bar, list cards)
 
-## Struttura progetto
+## Project layout
 
 - `presentation`: `MainActivity`, `MainViewModel`, `MainUiState`, `PokemonAdapter`
-- `domain`: `Pokemon`, `PokemonRepository`, use case lista + use case preferiti
-- `data`: `PokeApiService`, DTO, `PokemonRepositoryImpl`
-- `di`: moduli Koin
+- `domain`: `Pokemon`, `PokemonRepository`, list use cases + favorites use cases
+- `data`: `PokeApiService`, DTOs, `PokemonRepositoryImpl`
+- `di`: Koin modules
 
 ## API
 
 Base URL: `https://pokeapi.co/api/v2/`
 
-## Icona launcher
+## Launcher icon
 
-L’app usa un’icona con monogramma `PB` e palette giallo/nera/rossa (ispirata a Pikachu), con adaptive icon (API 26+).
+The app uses a `PB` monogram with a yellow/black/red palette (Pikachu-inspired), with adaptive icon (API 26+).

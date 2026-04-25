@@ -45,7 +45,6 @@ class PokemonAdapter(
             }
 
             binding.tvName.text = item.name
-            binding.tvDescription.text = item.description.ifBlank { "-" }
 
             binding.tvType1.text = item.types.firstOrNull().orEmpty()
             val secondType = item.types.getOrNull(1)

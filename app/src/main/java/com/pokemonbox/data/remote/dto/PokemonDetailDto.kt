@@ -9,7 +9,8 @@ data class PokemonDetailDto(
     val types: List<TypeSlotDto>,
     val height: Int,
     val weight: Int,
-    val abilities: List<AbilitySlotDto>
+    val abilities: List<AbilitySlotDto>,
+    val stats: List<StatSlotDto>
 )
 
 data class SpritesDto(
@@ -42,5 +43,15 @@ data class AbilitySlotDto(
 )
 
 data class AbilityDto(
+    val name: String
+)
+
+data class StatSlotDto(
+    @SerializedName("base_stat")
+    val baseStat: Int,
+    val stat: StatDto
+)
+
+data class StatDto(
     val name: String
 )
