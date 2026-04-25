@@ -1,6 +1,5 @@
 <resources>
     <color name="white">#FFFFFFFF</color>
-    <color name="title_color">#221015</color>
     <color name="search_bg">#F1F1F1</color>
     <color name="chip_bg">#EEEEEE</color>
     <color name="text_primary">#191919</color>

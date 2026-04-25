@@ -77,7 +77,7 @@ class MainActivity : AppCompatActivity() {
             val topSafe = max(system.top, cutout.top)
             val fabMarginBase = (ActivityConstants.Main.FAB_BASE_MARGIN_DP * d).toInt()
 
-            binding.tvTitle.updateLayoutParams<ConstraintLayout.LayoutParams> {
+            binding.ivTitle.updateLayoutParams<ConstraintLayout.LayoutParams> {
                 topMargin = topSafe
             }
 

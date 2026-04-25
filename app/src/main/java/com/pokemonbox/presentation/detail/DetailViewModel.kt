@@ -19,7 +19,10 @@ class DetailViewModel(
     private var currentPokemonId: Int? = null
 
     fun load(pokemonId: Int) {
-        if (currentPokemonId == pokemonId && _uiState.value.pokemon != null) return
+        if (currentPokemonId == pokemonId && _uiState.value.pokemon != null) {
+            // Skip re-fetch if this Pokémon is already loaded (e.g. after rotation).
+            return
+        }
         currentPokemonId = pokemonId
 
         viewModelScope.launch {

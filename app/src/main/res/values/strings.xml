@@ -7,7 +7,6 @@
     <string name="tab_favorites">Favorites</string>
     <string name="favorite_action">Add to favorites</string>
     <string name="back">Back</string>
-    <string name="pokemon_id_label">#%1$d</string>
     <string name="fab_search">Open search</string>
     <string name="pokemon_hp_label">HP %1$d</string>
     <string name="pokemon_meta_label">No. %1$d • %2$s</string>
